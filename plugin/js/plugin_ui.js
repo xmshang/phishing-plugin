@@ -14,7 +14,7 @@ chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
     var legitimatePercent = background.legitimatePercents[tabs[0].id];
 
     if (legitimatePercent == undefined) {
-        $("#refresh_msg").text("Please Refresh this webpage");
+        $("#refresh_msg").text("Please Refresh Current Page");
         return;
     }
 
