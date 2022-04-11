@@ -42,10 +42,10 @@ $("#detail_btn").bind("click", function () {
     console.log(text)
     if (text == "Show details") {
         $("#detail_btn").text("Hide details");
-        for(var key in result){
+        for (var key in result) {
             var newFeature = document.createElement("li");
             newFeature.textContent = key;
-            newFeature.style.color=colors[result[key]];
+            newFeature.style.color = colors[result[key]];
             featureList.appendChild(newFeature);
         }
     } else {

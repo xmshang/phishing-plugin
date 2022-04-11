@@ -4,19 +4,19 @@ var isPhish = {};
 
 
 function fetchLive(callback) {
-  $.getJSON("https://raw.githubusercontent.com/xmshang/phishing-plugin/main/static/classifier.json?token=GHSAT0AAAAAABSQEOFUBN44S4KUOGAKGAU2YSUV4GQ", function(data) {
-      chrome.storage.local.set({cache: data, cacheTime: Date.now()}, function() {
-          callback(data);
-      });
+  $.getJSON("https://raw.githubusercontent.com/xmshang/phishing-plugin/main/static/classifier.json?token=GHSAT0AAAAAABSQEOFUBN44S4KUOGAKGAU2YSUV4GQ", function (data) {
+    chrome.storage.local.set({ cache: data, cacheTime: Date.now() }, function () {
+      callback(data);
+    });
   });
 }
 
 function fetchCLF(callback) {
-  chrome.storage.local.get(['cache', 'cacheTime'], function(items) {
-      if (items.cache && items.cacheTime) {
-          return callback(items.cache);
-      }
-      fetchLive(callback);
+  chrome.storage.local.get(['cache', 'cacheTime'], function (items) {
+    if (items.cache && items.cacheTime) {
+      return callback(items.cache);
+    }
+    fetchLive(callback);
   });
 }
 
@@ -24,29 +24,29 @@ function classify(tabId, result) {
   var legitimateCount = 0;
   var suspiciousCount = 0;
   var phishingCount = 0;
-  for(var key in result) {
-    if(result[key] == "1") phishingCount++;
-    else if(result[key] == "0") suspiciousCount++;
+  for (var key in result) {
+    if (result[key] == "1") phishingCount++;
+    else if (result[key] == "0") suspiciousCount++;
     else legitimateCount++;
   }
-  legitimatePercents[tabId] = legitimateCount / (phishingCount+suspiciousCount+legitimateCount) * 100;
+  legitimatePercents[tabId] = legitimateCount / (phishingCount + suspiciousCount + legitimateCount) * 100;
 
-  if(result.length != 0) {
+  if (result.length != 0) {
     var X = [];
     X[0] = [];
-    for(var key in result) {
-        X[0].push(parseInt(result[key]));
+    for (var key in result) {
+      X[0].push(parseInt(result[key]));
     }
     console.log(result);
     console.log(X);
-    fetchCLF(function(clf) {
+    fetchCLF(function (clf) {
       var rf = random_forest(clf);
       y = rf.predict(X);
       console.log(y[0]);
-      if(y[0][0]) {
+      if (y[0][0]) {
         isPhish[tabId] = true;
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-          chrome.tabs.sendMessage(tabs[0].id, {action: "alert_user"}, function(response) {
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+          chrome.tabs.sendMessage(tabs[0].id, { action: "alert_user" }, function (response) {
           });
         });
       } else {
@@ -57,8 +57,8 @@ function classify(tabId, result) {
 
 }
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  results[sender.tab.id]=request;
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  results[sender.tab.id] = request;
   classify(sender.tab.id, request);
-  sendResponse({received: "result"});
+  sendResponse({ received: "result" });
 });
