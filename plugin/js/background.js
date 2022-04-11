@@ -4,8 +4,7 @@ var isPhish = {};
 
 
 function fetchLive(callback) {
-  $.getJSON("https://raw.githubusercontent.com/xmshang/phishing/main/static/classifier.json?token=GHSAT0AAAAAABSQEOFVHMR22LL2VLLBV4IEYSUSXWQ", function(data) {
-  // $.getJSON("https://raw.githubusercontent.com/picopalette/phishing-detection-plugin/master/static/classifier.json", function(data) {
+  $.getJSON("https://raw.githubusercontent.com/xmshang/phishing-plugin/main/static/classifier.json?token=GHSAT0AAAAAABSQEOFUBN44S4KUOGAKGAU2YSUV4GQ", function(data) {
       chrome.storage.local.set({cache: data, cacheTime: Date.now()}, function() {
           callback(data);
       });
