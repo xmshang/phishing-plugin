@@ -1,0 +1,74 @@
+.plugin_content {
+    width: 350px !important;
+    height: 455px !important;
+    background: rgba(0, 0, 0, 1);
+    color: #fff;
+    text-align: center;
+}
+
+.header {
+    height: 60px;
+    font-size: 22px;
+}
+
+.title {
+    border-bottom: 1px solid rgb(96, 93, 93);
+    padding: 15px 20px;
+    margin: 0 20px;
+}
+
+.main {
+    padding: 20px;
+}
+
+.percentage {
+    font-size: 18px;
+}
+
+#site_score {
+    color: #00A82D;
+    font-weight: bold;
+    font-size: 48px;
+    margin: auto;
+    line-height: 100px;
+    margin-top: 20px;
+}
+
+#site_percent {
+    font-weight: bold;
+}
+
+#site_msg {
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+ul {
+    list-style: none;
+    padding: 20px 0px;
+    background: rgba(0, 0, 0, 1);
+}
+
+li {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 2px;
+    display: inline-block;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+    color: #fff;
+}
+
+#report_btn {
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    margin: 5px auto;
+    background: #105693;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}

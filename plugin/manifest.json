@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "name": "Phishing Detection Plugin",
+  "version": "1.0.0",
+  "description": "A plugin for phishing websites detection with random forest algorithm.",
+  "browser_action": {
+    "default_title": "Phishing Detection Plugin",
+    "default_icon": "assets/icon128.png",
+    "default_popup": "plugin_ui.html"
+  },
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "webNavigation"
+  ],
+  "background": {
+    "scripts": [
+      "js/jquery.js",
+      "js/randomforest.js",
+      "js/background.js"
+    ],
+    "persistent": true
+  },
+  "icons": {
+    "16": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "js/jquery.js",
+        "js/features.js"
+      ]
+    }
+  ]
+}
