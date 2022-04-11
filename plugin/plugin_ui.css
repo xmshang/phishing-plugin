@@ -4,6 +4,7 @@
     background: rgba(0, 0, 0, 1);
     color: #fff;
     text-align: center;
+    font-family:"Microsoft YaHei";
 }
 
 .header {
@@ -13,7 +14,7 @@
 
 .title {
     border-bottom: 1px solid rgb(96, 93, 93);
-    padding: 15px 20px;
+    padding: 15px 15px;
     margin: 0 20px;
 }
 
@@ -55,8 +56,7 @@ ul {
 }
 
 li {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
     margin: 2px;
     display: inline-block;
