@@ -13,6 +13,13 @@ chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
     var isPhish = background.isPhish[tabs[0].id];
     var legitimatePercent = background.legitimatePercents[tabs[0].id];
 
+    if (legitimatePercent == undefined) {
+        $("#refresh_msg").text("Please Refresh this webpage");
+        return;
+    }
+
+    $("#refresh_msg").text("");
+
     $("#site_score").text("SAFE");
     $("#site_score").css("color", "#00A82D");
     $("#site_percent").text(parseInt(legitimatePercent) + "%");
@@ -30,11 +37,11 @@ chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
     }
 });
 
-$("#report_btn").bind("click", function () {
-    var text = $("#report_btn")[0].innerText
+$("#detail_btn").bind("click", function () {
+    var text = $("#detail_btn")[0].innerText
     console.log(text)
     if (text == "Show details") {
-        $("#report_btn").text("Hide details");
+        $("#detail_btn").text("Hide details");
         for(var key in result){
             var newFeature = document.createElement("li");
             newFeature.textContent = key;
@@ -43,13 +50,13 @@ $("#report_btn").bind("click", function () {
         }
     } else {
         $("#features").empty();
-        $("#report_btn").text("Show details");
+        $("#detail_btn").text("Show details");
     }
 });
 
 jQuery(document).ready(function ($) {
     $("#inner-content").slimScroll({
-        height: '455px'
+        height: '470px'
     });
 });
 
