@@ -4,7 +4,7 @@ var isPhish = {};
 
 
 function fetchLive(callback) {
-  $.getJSON("https://raw.githubusercontent.com/xmshang/phishing-plugin/main/static/classifier.json?token=GHSAT0AAAAAABSQEOFVUGJATO7GHPC3KUUMYSUWYXQ", function (data) {
+  $.getJSON("https://raw.githubusercontent.com/xmshang/plugin/main/classifier.json", function (data) {
     chrome.storage.local.set({ cache: data, cacheTime: Date.now() }, function () {
       callback(data);
     });
