@@ -1,6 +1,5 @@
 .plugin_content {
     width: 350px !important;
-    height: 470px !important;
     background: rgba(0, 0, 0, 1);
     color: #fff;
     text-align: center;
@@ -13,9 +12,11 @@
 }
 
 .title {
-    border-bottom: 1px solid rgb(96, 93, 93);
+    border-bottom: 1px solid #105693;
     padding: 15px 15px;
     margin: 0 20px;
+    line-height: 20px;
+    margin-top: 10px;
 }
 
 .main {

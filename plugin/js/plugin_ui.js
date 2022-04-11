@@ -56,7 +56,7 @@ $("#detail_btn").bind("click", function () {
 
 jQuery(document).ready(function ($) {
     $("#inner-content").slimScroll({
-        height: '470px'
+        height: '480px'
     });
 });
 
