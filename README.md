@@ -18,15 +18,16 @@ The frontend requested the trained model to classify the current website URL fea
 
 
 ## System Design
-![image](https://user-images.githubusercontent.com/92196435/165638561-a9a20433-6e7a-49b7-95c4-d23d14869dfe.png)
+![Plugin系统图](https://user-images.githubusercontent.com/92196435/165638764-391915b7-7ae3-45b8-af35-4d6fe8f38a9e.png)
+
 
 
 ## System Structure
-![image](https://user-images.githubusercontent.com/92196435/165638589-2befc5ad-8833-4e93-bebb-d107f6d3ccee.png)
+![Plugin Structure](https://user-images.githubusercontent.com/92196435/165638720-c4027c57-002c-4bfd-a7f0-19ce884910ba.png)
 
 
 
 ## Results
-![image](https://user-images.githubusercontent.com/92196435/165638378-7fb8a5d7-c792-4fc6-bf1f-6f8a957ff947.png)
+![image](https://user-images.githubusercontent.com/92196435/165638378-7fb8a5d7-c792-4fc6-bf1f-6f8a957ff947.png) 
 ![image](https://user-images.githubusercontent.com/92196435/165638406-bd3b10d1-3fd0-4565-a54f-2b688366453b.png)
 
