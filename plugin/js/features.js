@@ -89,6 +89,53 @@ if (patt.test(url)) {
 
 //---------------------- 9.  Domain Registration Length  ----------------------
 
+$.ajax({url: "https://api.devopsclub.cn/api/whoisquery?domain=" + urlDomain + "&type=json&standard=true"}).done(function (response) {
+    var _this = this;
+    if (response.code == 0) {
+        var data = response.data.data;
+        if (data != undefined) {    
+            var expirationTime = dateFromat(data.expirationTime);
+            var curDate = getCurrentDate();
+            
+            const days = (date, otherDate) => Math.ceil(Math.abs(date - otherDate) / (86400000));
+            var regist_length = days(new Date(curDate), new Date(expirationTime));
+
+            if (regist_length / 365 <= 1) {
+                _this.result["Regist_Length"] = "1";
+            } else {
+                _this.result["Regist_Length"] = "-1";
+            }
+
+            var registrationTime = dateFromat(data.registrationTime);
+            var domain_age = days(new Date(curDate), new Date(registrationTime));
+
+            if (domain_age / 30 < 6) {
+                _this.result["Ddomain_Age"] = "1";
+            } else {
+                _this.result["Ddomain_Age"] = "-1";
+            }
+        }
+    } else {
+        console.log('get domain expiration time failed')
+        _this.result["Regist_Length"] = "1";
+        _this.result["Ddomain_Age"] = "1";
+    }
+});
+
+function dateFromat(time) {
+    var date = new Date(time).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+
+    return date.split(" ")[0];
+}
+
+function getCurrentDate() {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var curDate = year + "-" + month + "-" + day;
+    return curDate;
+}
 //---------------------- 10. Favicon  ----------------------
 
 var favicon = undefined;
@@ -98,6 +145,7 @@ for (var i = 0; i < nodeList.length; i++) {
         favicon = nodeList[i].getAttribute("href");
     }
 }
+
 if (!favicon) {
     result["Favicon"] = "-1";
 } else if (favicon.length == 12) {
@@ -284,6 +332,16 @@ if (iframes.length == 0) {
 } else {
     result["iFrames"] = "1";
 }
+
+//---------------------- 24.Age of Domain ----------------------
+
+
+
+//---------------------- 28.Google Index ----------------------
+// def google_index(url):
+//     site = search(url, 5)
+//     return 1 if site else -1
+
 
 //---------------------- Sending the result  ----------------------
 
