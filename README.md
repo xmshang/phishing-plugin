@@ -1,5 +1,8 @@
 # Phishing Websites Detection
 
+## Essay
+https://github.com/xmshang/phishing-plugin/blob/main/870%20project%20final%20report%20-%20Phishing%20Group.pdf
+
 ## Description
 This plugin applied Random Forest algorithm in the backend and realized phishing websites detection.
  
